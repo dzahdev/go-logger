@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"github.com/dzahdev/logger/prettylog"
+	"github.com/dzahdev/go-logger/prettylog"
 	"log/slog"
 	"os"
 )
