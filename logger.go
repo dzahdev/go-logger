@@ -14,7 +14,7 @@ const (
 
 var globalLogger *slog.Logger
 
-func Init() {
+func init() {
 	env := getEnvLevel()
 	switch env {
 	case envDev:
@@ -26,7 +26,6 @@ func Init() {
 			Level: slog.LevelInfo,
 		}))
 	case envLocal:
-	default:
 		prettyHandler := prettylog.NewHandler(&slog.HandlerOptions{
 			Level:       slog.LevelDebug,
 			AddSource:   false,
@@ -38,6 +37,9 @@ func Init() {
 
 func getEnvLevel() string {
 	env := os.Getenv("ENV")
+	if env == "" {
+		env = envLocal
+	}
 	return env
 }
 
